@@ -5,7 +5,6 @@
 #include "geometry.h"
 #include "character.h"
 
-
 typedef struct Bullet_s
 {
   float    x, y;
@@ -15,6 +14,9 @@ typedef struct Bullet_s
   int      damage;
   SDL_bool fired;
 } Bullet_t;
+
+SDL_FRect
+Bullet_GetRect(Bullet_t *bullet);
 
 void
 Bullets_Fire(Character_t *character);
