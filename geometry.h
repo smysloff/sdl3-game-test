@@ -4,16 +4,16 @@
 #include <math.h>
 
 double
-getDegreesFromRadians(double radians);
+GetDegreesFromRadians(double radians);
 
 double
-getRadiansFromDegrees(double degrees);
+GetRadiansFromDegrees(double degrees);
 
 double
-getAngleBetweenFPoints(SDL_FPoint p1, SDL_FPoint p2);
+GetAngleBetweenFPoints(SDL_FPoint p1, SDL_FPoint p2);
 
 float
-getDistanceBetweenFPoints(SDL_FPoint p1, SDL_FPoint p2);
+GetDistanceBetweenFPoints(SDL_FPoint p1, SDL_FPoint p2);
 
 SDL_FPoint
-getFPointFromAngle(SDL_FPoint p1, double angle, float distance);
+GetFPointFromAngle(SDL_FPoint p1, double angle, float distance);

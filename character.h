@@ -20,5 +20,5 @@ typedef struct Character_s
   AtackStatus_t atackStatus;
 } Character_t;
 
-SDL_FRect*
+SDL_FRect
 Character_GetRect(Character_t *character);

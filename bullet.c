@@ -37,7 +37,7 @@ Bullets_Update(float deltatime)
     Bullet_t *bullet = bullets + i;
     if (!bullet->fired) continue;
 
-    SDL_FPoint position = getFPointFromAngle(
+    SDL_FPoint position = GetFPointFromAngle(
       (SDL_FPoint) { bullet->x, bullet->y },
 	bullet->angle, bullet->speed * deltatime);
 

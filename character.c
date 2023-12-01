@@ -7,10 +7,10 @@ Character_t player = {
   .atackStatus = ATACK_STATUS_IDLE,
 };
 
-SDL_FRect*
+SDL_FRect
 Character_GetRect(Character_t *restrict character)
 {
-  return &(SDL_FRect) {
+  return (SDL_FRect) {
     .x = character->x, .y = character->y,
     .w = character->w, .h = character->h,
   };
