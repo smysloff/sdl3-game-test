@@ -2,6 +2,8 @@
 
 #include <stdlib.h>
 #include <SDL3/SDL.h>
+#include "keyboard.h"
+#include "mouse.h"
 #include "config.h"
 #include "utils.h"
 #include "geometry.h"

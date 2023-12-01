@@ -1,10 +1,12 @@
 #include "game.h"
+#include "keyboard.h"
 
+extern Keyboard_t keyboard;
+extern Mouse_t mouse;
 extern Character_t player;
 extern Bullet_t bullets[BULLET_COUNT];
 
 Game_t game;
-SDL_FPoint mouse;
 
 void
 Game_Init(void)
@@ -68,6 +70,7 @@ Game_Events()
       }
       case SDL_EVENT_KEY_DOWN:
       {
+	Keyboard_KeyDown_Handler(&game.event.key);
 	switch (game.event.key.keysym.sym)
 	{
 	  case SDLK_ESCAPE:
@@ -76,14 +79,21 @@ Game_Events()
 	}
 	break;
       }
+      case SDL_EVENT_KEY_UP:
+      {
+	Keyboard_KeyUp_Handler(&game.event.key);
+	break;
+      }
       case SDL_EVENT_MOUSE_BUTTON_DOWN:
       {
+	Mouse_ButtonDown_Handler(&game.event.button);
 	if (player.atackStatus == ATACK_STATUS_IDLE)
 	  player.atackStatus = ATACK_STATUS_SHOT;
 	break;
       }
       case SDL_EVENT_MOUSE_BUTTON_UP:
       {
+	Mouse_ButtonUp_Handler(&game.event.button);
 	if (player.atackStatus == ATACK_STATUS_WAIT)
 	  player.atackStatus = ATACK_STATUS_IDLE;
 	break;
@@ -95,12 +105,13 @@ Game_Events()
 void
 Game_Update(void)
 {
+  Mouse_Update();
+
   float cx = player.x + player.w / 2.;
   float cy = player.y + player.h / 2.;
 
   if (SDL_GetMouseFocus())
   {
-    SDL_GetMouseState(&mouse.x, &mouse.y);
     player.angle = GetAngleBetweenFPoints(
       &(SDL_FPoint) { cx, cy },
       &(SDL_FPoint) { mouse.x, mouse.y }
